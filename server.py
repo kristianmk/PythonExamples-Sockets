@@ -3,8 +3,6 @@
 # Simple TCP sockets example.
 #
 # Python socket documentation: https://docs.python.org/3/library/socket.html
-#
-# Another Python version here: https://github.com/kristianmk/PythonExamples-SocketsCStyle
 
 import socket
 
