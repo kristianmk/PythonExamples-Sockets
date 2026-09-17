@@ -11,6 +11,8 @@ PORT: Final[int] = 55556
 BUFFER_SIZE: Final[int] = 1024
 MAX_MESSAGE_BYTES: Final[int] = 4096
 REQUEST_TEXT: Final[str] = "Hello world"
+RESPONSE_SUFFIX: Final[str] = " from server too!"
+MAX_RESPONSE_BYTES: Final[int] = MAX_MESSAGE_BYTES + len(RESPONSE_SUFFIX.encode("utf-8"))
 
 
 def receive_until_eof(sock: socket.socket, *, max_bytes: int) -> bytes:
@@ -45,7 +47,7 @@ def main() -> int:
             client_socket.sendall(request_bytes)
             client_socket.shutdown(socket.SHUT_WR)
 
-            response_bytes = receive_until_eof(client_socket, max_bytes=MAX_MESSAGE_BYTES + BUFFER_SIZE)
+            response_bytes = receive_until_eof(client_socket, max_bytes=MAX_RESPONSE_BYTES)
             if not response_bytes:
                 raise RuntimeError("Server closed the connection without sending a response")
 
