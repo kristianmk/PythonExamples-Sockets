@@ -1,8 +1,9 @@
 """Simple educational TCP server example.
 
-The protocol is intentionally small: one UTF-8 request per connection and one UTF-8
-response. Because TCP is a byte stream, the server reads until the client closes its
-writing side instead of assuming a single recv() call is a complete message.
+The protocol is intentionally small: one UTF-8 request and one UTF-8 response per
+connection. The server stays running so it can handle repeated client connections.
+Because TCP is a byte stream, it reads until the client closes its writing side
+instead of assuming a single recv() call is a complete message.
 """
 
 from __future__ import annotations
