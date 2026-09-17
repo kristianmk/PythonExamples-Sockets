@@ -1,7 +1,5 @@
 """Simple educational TCP client example matching server.py."""
 
-from __future__ import annotations
-
 import socket
 import sys
 from typing import Final

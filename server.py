@@ -6,8 +6,6 @@ Because TCP is a byte stream, it reads until the client closes its writing side
 instead of assuming a single recv() call is a complete message.
 """
 
-from __future__ import annotations
-
 import socket
 import sys
 from typing import Final
