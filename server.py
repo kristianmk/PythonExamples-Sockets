@@ -69,7 +69,11 @@ def main() -> int:
             print(f"Listening on {HOST}:{PORT}. Press Ctrl+C to stop.")
 
             while True:
-                conn, addr = server_socket.accept()
+                try:
+                    conn, addr = server_socket.accept()
+                except InterruptedError:
+                    continue
+
                 with conn:
                     handle_client(conn, addr)
     except KeyboardInterrupt:
